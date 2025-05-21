@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>پزشک‌یار</title>
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      padding: 30px;
+      background: #f9f9f9;
+      direction: rtl;
+    }
+    h1 {
+      color: #2c3e50;
+      text-align: center;
+    }
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 20px;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #2980b9;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #3498db;
+    }
+    .result {
+      margin-top: 30px;
+      background: #ffffff;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .result p {
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>پزشک‌یار</h1>
+
+  <label for="diseaseInput">نام بیماری را وارد کنید:</label>
+  <input type="text" id="diseaseInput" placeholder="مثلاً دیابت" />
+
+  <button onclick="getInfo()">نمایش اطلاعات</button>
+
+  <div class="result" id="output" style="display:none;"></div>
+
+  <script>
+    function getInfo() {
+      const disease = document.getElementById("diseaseInput").value.trim();
+      const output = document.getElementById("output");
+
+      if (disease === "") {
+        alert("لطفاً نام بیماری را وارد کنید.");
+        return;
+      }
+
+      if (disease === "دیابت") {
+        output.innerHTML = `
+          <h2>دیابت</h2>
+          <p><strong>علت:</strong> کاهش تولید انسولین یا مقاومت بدن به آن</p>
+          <p><strong>علائم:</strong> پرادراری، پرنوشی، کاهش وزن، خستگی</p>
+          <p><strong>درمان:</strong> دارویی (مانند انسولین، متفورمین)، رژیم غذایی و ورزش</p>
+          <p><strong>داروها:</strong> متفورمین، انسولین، گلی‌بن‌کلامید</p>
+        `;
+      } else {
+        output.innerHTML = `
+          <h2>${disease}</h2>
+          <p>در نسخه آزمایشی فقط اطلاعات دیابت در دسترس است.</p>
+        `;
+      }
+
+      output.style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
